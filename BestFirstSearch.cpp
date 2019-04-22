@@ -43,7 +43,7 @@ float findBound(int num, int profits[], int weights[], int capacity, Node n){
 		ret = (float)n.profit; //set ret to profit
 		int i = n.level; //start at level n is at
 		weight = n.weight; //set weight to the weight of n
-		while(i <= num && weight + weights[i] <= capacity){ //while i <= the index of last item and the weight + the weight of the item to be added is less than capacity
+		while(i < num && weight + weights[i] <= capacity){ //while i <= the index of last item and the weight + the weight of the item to be added is less than capacity
 			weight += weights[i]; //add weight of item [i] to the current weight
 			ret += profits[i]; //add the profit of item i to the bound
 			i++; //next
@@ -83,10 +83,10 @@ void writeKnapsack(int num, int profits[], int weights[], int capacity, int maxP
 			Node y; //yes child
 			y.level = x.level + 1; //child is at the next level
 			y.weight = weights[y.level - 1] + x.weight; //child has the weight of its parent + the weight of the child
-			// cout << y.level << endl;
-			// cout << profits[y.level - 1]<<", ";
-			// cout << x.profit << endl;
-			// cout << endl;
+			 //cout << y.level << endl;
+			 //cout << profits[y.level - 1]<<", ";
+			 //cout << x.profit << endl;
+			 //cout << endl;
 			y.profit = profits[y.level - 1] + x.profit; //child has the profit of the parent + the profit of the child
 			y.list = x.list; //child has the same knapsack as the parent
 			y.list[y.level-1] = 1; //child is added to the knapsack
@@ -98,6 +98,7 @@ void writeKnapsack(int num, int profits[], int weights[], int capacity, int maxP
 				sol = y.list; //optimal solution is y's knapsack
 			}
 			y.bound = findBound(num, profits, weights, capacity, y); //find the upper bound of yes child
+			//cout << y.bound << endl;
 			if(y.bound > maxProfit && y.weight < capacity){ //if the bound of y is > maxProfit and the weight is under the capacity
 				pqueue.push(y); //add y to the priority queue
 			} else { //it is not a promising node
