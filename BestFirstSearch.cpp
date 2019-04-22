@@ -187,6 +187,7 @@ int main(int argc, char * argv[]){
 		// for(int i = 0; i < num; i++){
 		// 	cout << sProfits[i] << ": " << sWeights[i] << endl;
 		// }
+		cout << "here" << endl;
 		writeKnapsack(num, sProfits, sWeights, cap, 0, output); //begin knapsack function and write results
 	}
 }
