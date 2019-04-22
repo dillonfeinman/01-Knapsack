@@ -176,19 +176,16 @@ int main(int argc, char * argv[]){
 			//cout << items[i].index << ": " << items[i].weight << "," << items[i].profit << "," << items[i].pw << endl;
 			index++; //next index
 		}
-		cout << "here" << endl;
-		int sProfits[num+1]; //sort profits
-		int sWeights[num+1]; //sort weights
+		int sProfits[num]; //sort profits
+		int sWeights[num]; //sort weights
 		sort(items, items+num, compItemByPW); //sort items by profit/weight
-		cout << "here" << endl;
-		for(int i = 0; i < num+1; i++){ 
-			sProfits[i] = profits[items[i].index]; //sort profits using sorted items
-			sWeights[i] = weights[items[i].index]; //sort weights using sorted items
+		for(int i = 0; i < num; i++){ 
+			sProfits[i] = profits[items[i].index-1]; //sort profits using sorted items
+			sWeights[i] = weights[items[i].index-1]; //sort weights using sorted items
 		}
 		// for(int i = 0; i < num; i++){
 		// 	cout << sProfits[i] << ": " << sWeights[i] << endl;
 		// }
-		cout << "here" << endl;
 		writeKnapsack(num, sProfits, sWeights, cap, 0, output); //begin knapsack function and write results
 	}
 }
