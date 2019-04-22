@@ -69,6 +69,9 @@ void writeKnapsack(int num, int profits[], int weights[], int capacity, int maxP
 	x.weight = 0; //init weight to 0
 	maxProfit = 0; //init max profit to 0
 	x.bound = findBound(num, profits, weights, capacity, x); //find upper bound of x
+	// for(int i = 0; i < num; i++){
+	// 	  cout << profits[i] << "," << endl;
+	// }
 	vector<int> newlist (num, 0); //create a list of 0's for each item
 	x.list = newlist; //init x's list to the new list
 	pqueue.push(x); //push x onto the priority queue
@@ -80,10 +83,10 @@ void writeKnapsack(int num, int profits[], int weights[], int capacity, int maxP
 			Node y; //yes child
 			y.level = x.level + 1; //child is at the next level
 			y.weight = weights[y.level - 1] + x.weight; //child has the weight of its parent + the weight of the child
-			//cout << y.level << endl;
-			cout << profits[y.level - 1]<<", ";
-			cout << x.profit << endl;
-			cout << endl;
+			// cout << y.level << endl;
+			// cout << profits[y.level - 1]<<", ";
+			// cout << x.profit << endl;
+			// cout << endl;
 			y.profit = profits[y.level - 1] + x.profit; //child has the profit of the parent + the profit of the child
 			y.list = x.list; //child has the same knapsack as the parent
 			y.list[y.level-1] = 1; //child is added to the knapsack
@@ -180,8 +183,8 @@ int main(int argc, char * argv[]){
 		int sWeights[num]; //sort weights
 		sort(items, items+num, compItemByPW); //sort items by profit/weight
 		for(int i = 0; i < num; i++){ 
-			sProfits[i] = profits[items[i].index-1]; //sort profits using sorted items
-			sWeights[i] = weights[items[i].index-1]; //sort weights using sorted items
+			sProfits[i] = profits[items[i].index]; //sort profits using sorted items
+			sWeights[i] = weights[items[i].index]; //sort weights using sorted items
 		}
 		// for(int i = 0; i < num; i++){
 		// 	cout << sProfits[i] << ": " << sWeights[i] << endl;
