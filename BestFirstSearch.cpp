@@ -176,6 +176,7 @@ int main(int argc, char * argv[]){
 			//cout << items[i].index << ": " << items[i].weight << "," << items[i].profit << "," << items[i].pw << endl;
 			index++; //next index
 		}
+		cout << "here" << endl;
 		int sProfits[num]; //sort profits
 		int sWeights[num]; //sort weights
 		sort(items, items+num, compItemByPW); //sort items by profit/weight
