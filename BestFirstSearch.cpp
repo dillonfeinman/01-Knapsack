@@ -180,6 +180,7 @@ int main(int argc, char * argv[]){
 		int sProfits[num+1]; //sort profits
 		int sWeights[num+1]; //sort weights
 		sort(items, items+num, compItemByPW); //sort items by profit/weight
+		cout << "here" << endl;
 		for(int i = 0; i < num+1; i++){ 
 			sProfits[i] = profits[items[i].index]; //sort profits using sorted items
 			sWeights[i] = weights[items[i].index]; //sort weights using sorted items
